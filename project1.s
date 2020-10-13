@@ -7,10 +7,6 @@ userInput:	 .space 11
 .text
 main:
 
-li $v0, 4
-la $a0, input		   #ask for user input
-syscall
-
 li $v0, 8
 la $a0, userInput	   #get user input
 li $a1, 11
