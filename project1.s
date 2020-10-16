@@ -20,30 +20,21 @@ sw $v0, userInput		    #moves input into temp register
 syscall
 
 loop:
-la $a3, $t8
 li $v0, 5
 add $t0, $t1, $a0 	    #adds $t1(index) to $a0(base address)
 lb $t0,($t0) 	   	    #loads in first byte of string
 addi $t1, $t1, 1	    #increments by one to get next byte
 syscall
 
-li $v0, 4
-la $a0, output 			# tries to load byte and print -debug
 syscall
 add $a2, $zero, $zero
 
-add $t4, $t4, $t0 
+add $s0, $t4, $t0 
 li $v0, 1				#prints int stored in
-add $a0, $zero, $t4
+add $a0, $zero, $s0
 syscall
 		#adds the current total with new num
 
-li $v0, 4
-la $a0, loops			#prints "loops" for every iteration
-syscall
-li $v0, 1
-add $a2, $zero, $t1
-syscall
 bne $t1, $t5, loop
 j print_output
 
@@ -51,6 +42,7 @@ print_output:
 li $v0, 4
 la $a0, output 		    #print output
 syscall
+move 
 li $v0, 4
 la $a0, userOutput
 syscall
