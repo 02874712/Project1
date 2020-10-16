@@ -29,9 +29,7 @@ syscall
 syscall
 add $a2, $zero, $zero
 
-add $s0, $t4, $t0 
-li $v0, 1				#prints int stored in
-add $a0, $zero, $s0
+add $t4, $t4, $t0 
 syscall
 		#adds the current total with new num
 
@@ -41,10 +39,9 @@ j print_output
 print_output:
 li $v0, 4
 la $a0, output 		    #print output
-syscall
-move 
-li $v0, 4
-la $a0, userOutput
+syscall 
+li $v0, 1
+la $a0, $t4
 syscall
 
 end:
